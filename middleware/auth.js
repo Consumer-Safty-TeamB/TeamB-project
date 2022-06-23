@@ -19,4 +19,4 @@ const auth = async ( req, res, next) => {
     }
 }
 
-module.exports = auth; //git
+module.exports = auth; //gits
