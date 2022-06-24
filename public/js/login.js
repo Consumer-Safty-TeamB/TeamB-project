@@ -1,5 +1,5 @@
-const submitButton = document.getElementById('signin-btn')
-const email = document.getElementById('userEmail');
+const submitButton = document.getElementById('login-btn')
+const userEmail = document.getElementById('userEmail');
 const userPassword = document.getElementById('userPassword');
 
 //Send POST to API to add gas report
@@ -7,13 +7,11 @@ async function signin(e)
 {
     e.preventDefault();
 
-    if(userPassword.value ==''|| email == '')
+    if(userPassword.value ==''|| userEmail == '')
     {
         alert('Please fill in fields');
     }
-    else if (userPassword.value != confirmUserPassword.value){
-        alert('Your passwords do not match! type in correct passwords')
-    }
+    
     else
     {
         const sendBody = {
@@ -25,8 +23,7 @@ async function signin(e)
             const res = await fetch('/users/login', {
                method: 'POST',
                headers: {
-                'Content-Type': 'application/json',
-                // 'Authorization', document.cookie
+                'Content-Type': 'application/json'
                } ,
                body: JSON.stringify(sendBody)
             });
@@ -37,11 +34,10 @@ async function signin(e)
             
             data = await res.json();
             const jwtToken = data.token;
-            document.cookie = 'jwt=' + jwtToken;
-
-            console.log(document.cookie)
-
+            console.log(jwtToken);
+            
             alert('You have successfully loged in!');
+            window.location.href = '/index.html';
 
     
         } catch (err) {
@@ -53,4 +49,6 @@ async function signin(e)
 
 }
 
-submitButton.addEventListener('click', signin);
+window.onload=function(){
+    submitButton.addEventListener('click', signin);
+}

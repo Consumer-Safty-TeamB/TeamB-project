@@ -3,14 +3,14 @@ const submitButton = document.getElementById('signup-btn')
 const userName = document.getElementById('userName');
 const userPassword = document.getElementById('userPassword');
 const confirmUserPassword = document.getElementById('confirmUserPassword');
-const email = document.getElementById('userEmail');
+const userEmail = document.getElementById('userEmail');
 
 //Send POST to API to add gas report
 async function signup(e)
 {
     e.preventDefault();
 
-    if(userName.value =='' || userPassword.value ==''|| email == '')
+    if(userName.value =='' || userPassword.value ==''|| userEmail == '')
     {
         alert('Please fill in fields');
     }
