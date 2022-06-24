@@ -24,12 +24,13 @@ app.use(express.json());
 //Enable cors
 app.use(cors());
 
-//Set static folder
+//Set static folder 
 app.use(express.static(path.join(__dirname , 'public')));
 
 // Routes
 app.use('/api/v1/gasReports' , gasReports);
 app.use(userRouter);
+app.use('/api/v1/messages' , require('./routes/messages'));
 
 const PORT = process.env.PORT || 5000;
 
