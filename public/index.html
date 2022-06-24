@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7514a190de.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script>
+  //Grab Location Function
+  const getLocation = () => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+       if (position)
+         {
+        //   $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=YOUR_API_KEY', function(data) {
+        //     console.log(data);
+        // });  
+          document.getElementById('gasLeak-address').value = position.coords.latitude + " " + position.coords.longitude;
+          }
+        })
+      }
+</script>
+<style>
+    .b1{
+        background-position: center;
+        background-size: cover;
+        border: 1px solid black;
+        border-radius: 10%;
+        width: 40%;
+        margin-bottom: 12%;
+        background-color: white;
+    }
+
+    .main-div{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+
+
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="logout.html">Logout</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <br>
+<div class="container">
+<h1 style="text-align:center; color:white; font-size:125px">Smell Gas, Act Fast</h1>
+<br><br><br>
+
+<div align="center">
+<img src="_con.jpg">
+</div>
+<br><br><br><br>
+
+
+<div class="main-div">
+
+<div onclick="location.href='report.html';" class="b1" style="font-size: 50px; line-height: 200px; text-align: center; cursor: pointer;">
+  Report</div>
+<div onclick="location.href='community.html';" class="b1" style="font-size: 45px; line-height: 200px; text-align: center; cursor: pointer;">
+  Community</div>
+<div onclick="location.href='learnmore.html';" class="b1" style="font-size: 45px; line-height: 200px; text-align: center; cursor: pointer;">
+ Learn More</div>
+<div onclick="location.href='about.html';" class="b1" style="font-size: 48px; line-height: 200px; text-align: center; cursor: pointer;">
+  </a>About Us</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
