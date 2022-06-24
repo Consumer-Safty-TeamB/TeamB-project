@@ -16,16 +16,20 @@
             }
 
    const getLocation = () => {
+    if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition( async function (position) {
        if (position)
          {
           const formattedAddress = await getAddress(position.coords.latitude , position.coords.longitude);
           document.getElementById('gasLeak-address').value = formattedAddress;
-          }else{
-            document.getElementById('gasLeak-address').value = 'Geo location is not supported by this browser!'
-          }
-        })
+         }
+         else{
+          document.getElementById('gasLeak-address').value = 'Geo location is not supported by this browser!'
+         }
+    })
       }
+    }
+
 </script>
 
 
