@@ -32,12 +32,9 @@ async function signin(e)
                 throw Error('Something went wrong! Please try again! ')
             }
             
-            data = await res.json();
-            const jwtToken = data.token;
-            console.log(jwtToken);
-            
             alert('You have successfully loged in!');
-            window.location.href = '/index.html';
+            console.log(document.cookie);
+            // window.location.href = '/index.html';
 
     
         } catch (err) {

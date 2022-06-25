@@ -4,6 +4,10 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB= require('./config/db');
 const chalk = require('chalk');
+const cookieParser = require("cookie-parser");
+const jwt = require('jsonwebtoken')
+// const User = require('./models/User');
+const authorization = require('./middleware/authorization')
 
 //routers
 const gasReports =  require('./routes/gasReports');
@@ -24,13 +28,23 @@ app.use(express.json());
 //Enable cors
 app.use(cors());
 
+//cookieparser();
+app.use(cookieParser());
+
+//Set static folder 
+app.use(express.static(path.join(__dirname , 'public_unauthed')));
+//Auth
+app.use(authorization);
+
 //Set static folder 
 app.use(express.static(path.join(__dirname , 'public')));
 
+
 // Routes
-app.use('/api/v1/gasReports' , gasReports);
+app.use('/api/v1/gasReports' , authorization, gasReports);
 app.use(userRouter);
 app.use('/api/v1/messages' , require('./routes/messages'));
+
 
 const PORT = process.env.PORT || 5000;
 
