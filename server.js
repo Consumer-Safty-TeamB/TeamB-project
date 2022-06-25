@@ -2,21 +2,22 @@ const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB= require('./config/db');
 const chalk = require('chalk');
 const cookieParser = require("cookie-parser");
-const jwt = require('jsonwebtoken')
-// const User = require('./models/User');
+
+// load env vars
+dotenv.config({ path : './config/config.env' });
+
+const connectDB= require('./config/db');
 const authorization = require('./middleware/authorization')
+
+
 
 //routers
 const gasReports =  require('./routes/gasReports');
 const userRouter = require('./routes/user');
 const { application } = require('express');
 const { resourceLimits } = require('worker_threads');
-
-// load env vars
-dotenv.config({ path : './config/config.env' });
 
 
 //Connect to database

@@ -1,9 +1,10 @@
-const dotenv = require('dotenv');
-// load env vars
-dotenv.config({ path : './config/config.env' });
+// const dotenv = require('dotenv');
+// // load env vars
+// dotenv.config({ path : './config/config.env' });
 
 const NodeGeocoder = require('node-geocoder');
 
+console.log(process.env);
 
 const options = {
   provider: process.env.GEOCODER_PROVIDER,
