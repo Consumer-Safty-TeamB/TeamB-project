@@ -13,9 +13,11 @@ const authorization = require('./middleware/authorization')
 const gasReports =  require('./routes/gasReports');
 const userRouter = require('./routes/user');
 const { application } = require('express');
+const { resourceLimits } = require('worker_threads');
 
 // load env vars
 dotenv.config({ path : './config/config.env' });
+
 
 //Connect to database
 connectDB();
@@ -47,6 +49,8 @@ app.use('/api/v1/messages' , require('./routes/messages'));
 app.use('/api/v1/gasReports' , gasReports);
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT , () => console.log(chalk.green.inverse('Server running in ' + process.env.NODE_ENV + 'mode on port ' + PORT)))
+
+

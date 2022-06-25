@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const geocoder = require('../utils/geocoder')
+const moment = require('moment-timezone');
+const dateNewyork = moment.tz(Date.now(), "America/New_York");
+
+
 
 const GasReportsSchema = new mongoose.Schema({
     witnessName: {
@@ -27,14 +31,15 @@ const GasReportsSchema = new mongoose.Schema({
       },
       createdAt: {
           type: Date,
-          default: Date.now
+          default: dateNewyork
       }
 });
 
 //GEocode & create location
 GasReportsSchema.pre('save', async function(next) {
   //ISSUE IS HERE
-  const loc = await geocoder.geocode(this.address);
+
+    const loc = await geocoder.geocode(this.address);
   
   this.location = {
     type: 'Point',

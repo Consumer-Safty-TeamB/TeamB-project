@@ -7,6 +7,7 @@ const GasReports = require('../models/GasReports');
 exports.getGasReports = async (req, res, next) => {
     try {
         const gasReports = await GasReports.find();
+        console.log(gasReports)
         return res.status(200).json({
             success: true,
             count: gasReports.length,

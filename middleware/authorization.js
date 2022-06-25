@@ -5,7 +5,6 @@ const User = require('../models/User')
 const authorization = async (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) {
-      console.log('nothere');
       return res.redirect('/login.html');
     }
     try {
