@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname , 'public')));
 
 
 // Routes
-app.use('/api/v1/gasReports' , authorization, gasReports);
+app.use('/api/v1/gasReports' , gasReports);
 app.use('/api/v1/messages' , require('./routes/messages'));
 
 

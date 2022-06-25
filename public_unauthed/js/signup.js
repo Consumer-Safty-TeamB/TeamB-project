@@ -17,6 +17,9 @@ async function signup(e)
     else if (userPassword.value != confirmUserPassword.value){
         alert('Your passwords do not match! type in correct passwords')
     }
+    else if (userPassword.value.length < 7){
+        alert('Your password length must be longer than 7 or more character')
+    }
     else
     {
         const sendBody = {
