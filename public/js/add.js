@@ -32,7 +32,10 @@ async function addGasReport(e)
             if(res.status === 400){
                 throw Error('Gas Report already Exist!')
             }
-    
+            else if(res.status === 500){
+                throw Error('Server Error!')
+            }
+            
             alert('GasLeak Has Been Reported! Thank you for your contribution to the society!');
             window.location.href = '/index.html';
     

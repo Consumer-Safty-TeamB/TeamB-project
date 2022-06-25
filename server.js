@@ -43,8 +43,8 @@ app.use(express.static(path.join(__dirname , 'public')));
 
 
 // Routes
-app.use('/api/v1/gasReports' , gasReports);
 app.use('/api/v1/messages' , require('./routes/messages'));
+app.use('/api/v1/gasReports' , gasReports);
 
 
 const PORT = process.env.PORT || 5000;

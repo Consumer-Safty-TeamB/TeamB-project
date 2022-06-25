@@ -33,7 +33,9 @@ const GasReportsSchema = new mongoose.Schema({
 
 //GEocode & create location
 GasReportsSchema.pre('save', async function(next) {
+  //ISSUE IS HERE
   const loc = await geocoder.geocode(this.address);
+  
   this.location = {
     type: 'Point',
     coordinates: [loc[0].longitude , loc[0].latitude],
