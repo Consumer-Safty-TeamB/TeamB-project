@@ -33,8 +33,7 @@ async function signin(e)
             }
             
             alert('You have successfully loged in!');
-            console.log(document.cookie);
-            // window.location.href = '/index.html';
+            window.location.href = '/index.html';
 
     
         } catch (err) {

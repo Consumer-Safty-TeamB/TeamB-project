@@ -5,20 +5,21 @@ const User = require('../models/User')
 const authorization = async (req, res, next) => {
     const token = req.cookies.access_token;
     if (!token) {
-      return res.location('login.html');
+      console.log('nothere');
+      return res.redirect('/login.html');
     }
     try {
     const decoded = jwt.verify(token, 'thisismysecret');
     const user = await User.findOne({_id: decoded._id, 'tokens.token': token })
     if (!user){
-        return res.location('login.html');
+        return res.redirect('/login.html');
         // throw new Error();
     }
     req.token = token;
     req.user = user;
       return next();
     } catch {
-      return res.location('login.html');
+      return res.redirect('/login.html');
     }
   };
 

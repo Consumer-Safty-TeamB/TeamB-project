@@ -9,7 +9,10 @@ router.post('/users/signup' , async ( req, res) => {
 
     try{
         const token = await user.generateAuthToken();
-        res.status(201).send({token});
+        res.cookie("access_token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+          }).status(201).send({token});
     }catch (err){
         res.status(400).send(err);
     }
@@ -35,6 +38,7 @@ router.post('/users/login' , async ( req,res) => {
 router.post("/users/logout", authorization, async (req, res) => {
     
     try{
+        console.log(req.token);
         
         req.user.tokens = req.user.tokens.filter((token)=> {
             return token.token !== req.token

@@ -37,14 +37,9 @@ async function signup(e)
             if(res.status === 400){
                 throw Error('Something went wrong! Please try again! ')
             }
-            
-            data = await res.json();
-            const jwtToken = data.token;
-            document.cookie = 'jwt=' + jwtToken;
-
-            console.log(document.cookie)
 
             alert('You have successfully signed up!');
+            window.location.href = '/index.html';
 
     
         } catch (err) {

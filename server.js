@@ -33,6 +33,8 @@ app.use(cookieParser());
 
 //Set static folder 
 app.use(express.static(path.join(__dirname , 'public_unauthed')));
+app.use(userRouter);
+
 //Auth
 app.use(authorization);
 
@@ -42,7 +44,6 @@ app.use(express.static(path.join(__dirname , 'public')));
 
 // Routes
 app.use('/api/v1/gasReports' , authorization, gasReports);
-app.use(userRouter);
 app.use('/api/v1/messages' , require('./routes/messages'));
 
 
