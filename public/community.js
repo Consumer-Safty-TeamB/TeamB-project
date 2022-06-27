@@ -33,7 +33,7 @@ const updateMessages = () => {
             body = body.sort(compare);
             body.splice(0, body.length - 5);
             const messages = document.getElementById("messages");
-            let htmlString = "<table class='table table-dark'><thead><tr><th scope='col'>Author</th><th scope='col'>Message</th><th scope='col'>Time</th></tr></thead><tbody>";
+            let htmlString = "<table class='table table-dark'><thead><tr><th scope='col'>Author</th><th scope='col'>Message</th><th scope='col'>Date</th><th scope='col'>Time</th></tr></thead><tbody>";
             for(let i = 0; i < body.length; i++)
             {
                  const element = body[i];
@@ -47,8 +47,16 @@ const updateMessages = () => {
                  htmlString += element.message;
                  htmlString += "</td>";
 
-                 htmlString += "<td>";
                  const date = new Date(element.time);
+                 htmlString += "<td>";
+                 htmlString += date.toLocaleDateString('en-us', { 
+                    weekday:"long", 
+                    year:"numeric", 
+                    month:"short", 
+                    day:"numeric"}) ;
+                 htmlString += "</td>";
+
+                 htmlString += "<td>";
                  htmlString += 
                     (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + 
                     " : " + date.getMinutes()+ " : "+ date.getSeconds() +
