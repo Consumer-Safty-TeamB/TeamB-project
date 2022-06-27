@@ -1,3 +1,16 @@
+function compare(a, b) {
+    if (a.time <  b.time ) {
+      return -1;
+    }
+    if (a.time >  b.time ) {
+      return 1;
+    }
+    // a must be equal to b
+    return 0;
+  }
+
+
+
 function postMessage()
 {
     const message = document.getElementById("message").value;
@@ -13,28 +26,45 @@ function logToServer(data, path) {
         body: JSON.stringify(data)
     }).then(res => { console.log("Request complete! response:", res, data); });
 }
-setInterval(async () => {
-    const res = await readFromServer("/api/v1/messages");
+const updateMessages = () => {
+    const res = readFromServer("/api/v1/messages").then((res) =>{
 
-    const messages = document.getElementById("messages");
-    const body = await res.json();
-    console.log(body);
-    messages.innerHTML = "<table> <tr><th>Author</th><th>Message</th></tr>";
-    body.forEach((element) => {
-        messages.innerHTML += "<tr>";
-        
-        messages.innerHTML += "<td>";
-        messages.innerHTML += element.author;
-        messages.innerHTML += "  </td>";
+        res.json().then((body) => {
+            body = body.sort(compare);
+            body.splice(0, body.length - 5);
+            const messages = document.getElementById("messages");
+            let htmlString = "<table class='table table-dark'><thead><tr><th scope='col'>Author</th><th scope='col'>Message</th><th scope='col'>Time</th></tr></thead><tbody>";
+            for(let i = 0; i < body.length; i++)
+            {
+                 const element = body[i];
+                 htmlString += "<tr>";
+                 
+                 htmlString += "<th scope='row'>";
+                 htmlString += element.author;
+                 htmlString += "</th>";
+         
+                 htmlString += "<td>";
+                 htmlString += element.message;
+                 htmlString += "</td>";
 
-        messages.innerHTML += "<td>";
-        messages.innerHTML += element.message;
-        messages.innerHTML += "</td>";
-        
-        messages.innerHTML += "</tr><br>";
+                 htmlString += "<td>";
+                 const date = new Date(element.time);
+                 htmlString += 
+                    (date.getHours() > 12 ? date.getHours() - 12 : date.getHours()) + 
+                    " : " + date.getMinutes()+ " : "+ date.getSeconds() +
+                    " " + (date.getHours() > 12 ? "PM" : "AM");
+                 htmlString += "</td>";
+                 
+                 htmlString += "</tr>";
+             }
+             htmlString += "</tbody></table>";
+             messages.innerHTML = htmlString;
+        });
     });
-    message.innerHTML += "</table"
-}, 1000);
+
+};
+updateMessages();
+setInterval(updateMessages, 1000);
 async function readFromServer(path) {
     return await fetch(path, {
         method: "GET",

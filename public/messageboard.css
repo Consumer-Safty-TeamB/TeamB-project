@@ -1,5 +1,13 @@
-#messages
+/*#messages, table
 {
-    border: solid;
-    color: red;
-}
+    border: 1px solid red;
+    text-align: left;
+    color: white;
+    border-spacing: 10px;
+    padding: 10px;
+    background-color: gray;
+
+}*/
+
+
+

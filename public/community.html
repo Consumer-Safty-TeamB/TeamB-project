@@ -47,20 +47,20 @@
         </div>
       </nav>  
       <div class="container">
-
-        <div><h5 style="color:red">This is a message board for Community</h1></div>
+        <br>
+        <div><h2 style="text-align:center; color:white">Community Board</h2></div>
         <!--  THIS IS A MESSAGE DIV FOR FETCHING MESSAGES FROM DATABASE-->
         <div id="messages"></div>
-
-
         <div class="form-group">
-          <label for="author">Author: </label>
-          <input type="text" id="author">
-          <br>
-          <label for="message">Message:</label>
-          <input type="text" id="message">
-          <br>
-          <input type="submit" onclick="postMessage()">
+          <form>
+            <label for="author">Author: </label>
+            <input type="text" placeholder="Enter Your Name" id="author">
+            <br>
+            <label for="message">Message:</label>
+            <input type="text" placeholder="Enter Your Comment" id="message">
+            <br>
+            <input type="submit" onclick="postMessage()">
+          </form>
         </div>
       </div>
 </body>
