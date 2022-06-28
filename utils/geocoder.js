@@ -4,7 +4,6 @@
 
 const NodeGeocoder = require('node-geocoder');
 
-console.log(process.env);
 
 const options = {
   provider: process.env.GEOCODER_PROVIDER,

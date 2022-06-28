@@ -1,0 +1,57 @@
+body {
+            background-color: black;
+            
+        }
+
+#smell{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}        
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+ /* Set the size of the div element that contains the map */
+#map {
+    height: 600px;
+    /* The height is 400 pixels */
+    margin: auto;
+    /* The width is the width of the web page */
+  }
+  .form-group
+  {
+    color: white;
+    font-weight: bold;
+  }
+  .blink_me {
+    animation: blinker 2s linear infinite;
+    color: rgb(0, 120, 207);
+  }
+
+  .btn
+  {
+    margin: auto;
+  }
+  
+
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .gm-style-cc {
+    display: none !important;
+  }
+  
+  .gm-style a[href^="https://maps.google.com/maps"] {
+    display: none !important;
+  }
+
+  /*CSS FOR AUTO COMPLETE TEXT FIELD */
+
+  .pac-container {
+    color: black;
+  }

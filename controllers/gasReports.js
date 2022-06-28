@@ -7,7 +7,6 @@ const GasReports = require('../models/GasReports');
 exports.getGasReports = async (req, res, next) => {
     try {
         const gasReports = await GasReports.find();
-        console.log(gasReports)
         return res.status(200).json({
             success: true,
             count: gasReports.length,
@@ -23,7 +22,7 @@ exports.getGasReports = async (req, res, next) => {
 // @route POST /api/v1/stores
 // @access Public
 exports.addGasReports = async (req, res, next) => {
-    console.log(req.body);
+    
     try {        
         const gasReports = await GasReports.create(req.body);
 

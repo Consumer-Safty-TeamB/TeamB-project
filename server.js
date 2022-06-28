@@ -16,8 +16,7 @@ const authorization = require('./middleware/authorization')
 //routers
 const gasReports =  require('./routes/gasReports');
 const userRouter = require('./routes/user');
-const { application } = require('express');
-const { resourceLimits } = require('worker_threads');
+
 
 
 //Connect to database
@@ -37,6 +36,7 @@ app.use(cookieParser());
 //Set static folder 
 app.use(express.static(path.join(__dirname , 'public_unauthed')));
 app.use(userRouter);
+app.use('/api/v1/gasReports' , gasReports);
 
 //Auth
 app.use(authorization);
@@ -47,7 +47,6 @@ app.use(express.static(path.join(__dirname , 'public')));
 
 // Routes
 app.use('/api/v1/messages' , require('./routes/messages'));
-app.use('/api/v1/gasReports' , gasReports);
 
 
 const PORT = process.env.PORT || 3000;
