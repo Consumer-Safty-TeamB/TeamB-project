@@ -36,8 +36,8 @@ async function addGasReport(e)
                 throw Error('Server Error!')
             }
             
-            alert('GasLeak Has Been Reported! Thank you for your contribution to the society!');
-            window.location.href = '/index.html';
+            var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+            myModal.show();
     
         } catch (err) {
             alert(err);
