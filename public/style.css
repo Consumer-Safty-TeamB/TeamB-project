@@ -2,7 +2,15 @@ body {
             background-color: black;
             
         }
-        
+
+.footer{
+  bottom:0;
+}
+
+.footer-img{
+  bottom: 0;
+  width:100%;
+}
 /* 
  * Always set the map height explicitly to define the size of the div element
  * that contains the map. 

@@ -14,8 +14,12 @@ body{
     background-position: center;
     background-size: cover;
     overflow: hidden;
+    /* flex-direction: column; */
+    height: 100%;
 }
+
 .login-box{
+    margin:0 auto;
     display: flex;
     justify-content: center;
     align-content: space-around;
@@ -84,4 +88,5 @@ body{
     text-decoration: none;
     cursor: pointer;
 }
+
 

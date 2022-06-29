@@ -3,6 +3,15 @@ body {
             
         }
 
+.footer{
+  display: flex;
+  margin-top: auto;
+}
+.footer-img{
+  bottom: 0;
+  width:100%;
+}
+           
 #smell{
   max-width: 100%;
   display: block;
