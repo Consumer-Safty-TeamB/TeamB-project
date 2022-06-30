@@ -13,6 +13,9 @@
         }
     ];
 
+    function zeroPad(num) {
+      return num.toString().padStart(2, "0");
+    }
 
     function initMap() {
         autocomplete= new google.maps.places.Autocomplete(
@@ -83,20 +86,39 @@
 
 
       //Gas leaker Marker info window
-    
+      
       for (let i = 0; i < features.length; i++) {
+        //cutting timestamp into date and time.
+        const year = data.data[i].createdAt.slice(0,4);
+        const month = data.data[i].createdAt.slice(5,7);
+        let day = data.data[i].createdAt.slice(8,10);
+        let hour = data.data[i].createdAt.slice(11,13);
+        let ampm = 'AM';
+        hour = hour - 4;
+        // hour = zeroPad(hour);
+        if (hour > 12){
+          hour = hour - 12;
+          ampm = 'PM';
+        } else if ( hour < 0){
+          hour = hour + 12;
+          ampm = 'PM';
+          day = day - 1;
+        }
+        hour = zeroPad(hour);
+        const minute = data.data[i].createdAt.slice(14,16);
+        const second = data.data[i].createdAt.slice(17,19);
+
         //Info Window when gasleak marker is clicked
         const contentString =
-        '<div id="content">' +
+        '<div id="content" class="container">' +
         '<div id="siteNotice">' +
         "</div>" +
-         '<h4 id="firstHeading" class="firstHeading">Gas Leak Report</h1>' +
-        '<div id="bodyContent">' +
-        '<p><b>GasLeak is reported by '+ data.data[i].witnessName +'</b>' +
-        '<h4>Gas Leak Description </h1>'+
-        data.data[i].description   +
-        '<h4>Gas Leak TimeStamp </h1>'+
-        data.data[i].createdAt   +
+        '<div id="bodyContent"><table><tr><td>' +
+        '<h5>Witness </td><td><h5> : '+ data.data[i].witnessName +'</h5></td></tr>' +
+        '<tr><td><h5>Description </h5></td><td><h5> : ' + data.data[i].description + '</h5></td></tr>'+
+        '<tr><td><h5>Date</h5></td><td><h5> : ' + month + '/' + day + '/' + year + '</h5></td></tr> ' +
+        '<tr><td><h5>Time</h5></td><td><h5> : ' + hour+ ':' + minute + ':' + second + ' ' + ampm +'</h5></td></tr> '
+        // data.data[i].createdAt   +
         "</div>" +
         "</div>";
         const infowindow = new google.maps.InfoWindow({
